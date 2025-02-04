@@ -1,5 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 
+export type Post = {
+	userId: number;
+	id: number;
+	title: string;
+	body: string;
+};
+
 const fetchPosts = async () => {
 	const response = await fetch('https://jsonplaceholder.typicode.com/posts');
 	if (!response.ok) throw new Error('Error fetching data');
@@ -20,7 +27,7 @@ function Posts() {
 	return (
 		<>
 			{' '}
-			{data.map((post) => (
+			{data.map((post: Post) => (
 				<p> {post.title}</p>
 			))}
 		</>
